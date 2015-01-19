@@ -50,6 +50,32 @@ return array(
                     ),
                 ),
             ),
+            'web' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/web',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Web',
+                        'controller'    => 'Index',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -73,7 +99,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Web\Index' => 'Application\Web\IndexController',
         ),
     ),
     'view_manager' => array(

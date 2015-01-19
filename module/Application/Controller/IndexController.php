@@ -18,4 +18,17 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+    
+    /**
+    * 函数描述
+    * @author $author
+    * @return void
+    * @version 2015-1-19
+    **/
+    
+    function testAction()
+    {
+        die('hh');
+    }
+    // --------------------------------------------------------------------
 }
